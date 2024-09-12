@@ -5,10 +5,15 @@ from datetime import datetime
 from urllib.request import urlopen
 import sqlite3
                                                                                                                                        
-app = Flask(__name__)   
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return render_template('hello.html') #Comm2
+
 @app.route("/contact/")
 def MaPremiereAPI():
-    return "<h2>Ma page de contact</h2>"
+    return render_template('contact.html')
   
 @app.route('/tawarano/')
 def meteo():
@@ -22,21 +27,13 @@ def meteo():
         results.append({'Jour': dt_value, 'temp': temp_day_value})
     return jsonify(results=results)
 
-@app.route("/rapport/")
+@app.route("/histogramme/")
 def mongraphique():
     return render_template("graphique.html")
 
-@app.route("/histogramme/")
-def histogramme():
-    return render_template("histogramme.html")
-
-@app.route("/contact/")
-def MaPremiereAPI():
-    return render_template('contact.html')
-                                                                                                                                       
-@app.route('/')
-def hello_world():
-    return render_template('hello.html') #comm2
+@app.route("/commits/")
+def moncommits():
+    return render_template("commits.html")
   
 if __name__ == "__main__":
   app.run(debug=True)
