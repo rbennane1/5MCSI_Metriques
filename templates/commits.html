@@ -18,18 +18,26 @@
         }
         h1 {
             color: #333;
+            margin-bottom: 20px;
+        }
+        .chart-container {
+            width: 80%; /* Container width relative to viewport */
+            max-width: 600px; /* Maximum width */
+            margin: 0 auto; /* Center the container */
+            padding: 10px;
         }
         canvas {
-            border: 2px solid #ddd;
+            border: 1px solid #ddd;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Commits par Minute</h1>
-    <canvas id="commitsChart" width="600" height="300"></canvas>
+    <div class="chart-container">
+        <canvas id="commitsChart" width="500" height="250"></canvas>
+    </div>
 
     <script>
         $(document).ready(function() {
@@ -65,7 +73,7 @@
                             backgroundColor: 'rgba(54, 162, 235, 0.2)',
                             borderColor: 'rgba(54, 162, 235, 1)',
                             borderWidth: 1,
-                            barPercentage: 0.5, // Adjusted bar width
+                            barPercentage: 0.6, // Adjusted bar width
                             categoryPercentage: 0.8 // Adjusted spacing between bars
                         }]
                     },
