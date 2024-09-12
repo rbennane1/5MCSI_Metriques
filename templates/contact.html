@@ -1,1 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Contact</title>
+</head>
+<body style="font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; margin: 0; position: relative;">
 
+    <!-- Image d'animation manga en arrière-plan -->
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWswa3NzOWJ6bGt5aWhvZmNtbnd5YzRkeTZwbW02azF3YXI4Y3NwaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xB8Q4ILnknAgm4H5tq/giphy.webp" alt="Animation Manga" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+
+    <div style="background: rgba(255, 255, 255, 0.2); border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 350px; text-align: center; position: relative;">
+        <h2 style="margin-bottom: 20px; color: #333; font-size: 24px;">Contactez-nous</h2>
+        <form action="#" method="post">
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label for="first-name" style="display: block; margin-bottom: 5px; color: #666; font-size: 14px;">Prénom</label>
+                <input type="text" id="first-name" name="first-name" required style="width: calc(100% - 22px); padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label for="last-name" style="display: block; margin-bottom: 5px; color: #666; font-size: 14px;">Nom</label>
+                <input type="text" id="last-name" name="last-name" required style="width: calc(100% - 22px); padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box;">
+            </div>
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label for="message" style="display: block; margin-bottom: 5px; color: #666; font-size: 14px;">Message</label>
+                <textarea id="message" name="message" required style="width: calc(100% - 22px); padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; height: 100px; resize: vertical;"></textarea>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <input type="submit" value="Envoyer" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
