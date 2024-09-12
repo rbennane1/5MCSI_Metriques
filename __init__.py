@@ -30,9 +30,7 @@ def mongraphique():
 def histogramme():
     return render_template("histogramme.html")
 
-@app.route("/contact/")
-def MaPremiereAPI():
-    return render_template("contact.html")
+
                                                                                                                                        
 @app.route('/')
 def hello_world():
