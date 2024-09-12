@@ -14,19 +14,22 @@
             font-family: Arial, sans-serif;
             margin: 20px;
             text-align: center;
+            background-color: #f4f4f4;
         }
         h1 {
             color: #333;
         }
         canvas {
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Commits par Minute</h1>
-    <canvas id="commitsChart" width="400" height="200"></canvas>
+    <canvas id="commitsChart" width="600" height="300"></canvas>
 
     <script>
         $(document).ready(function() {
@@ -53,35 +56,59 @@
                 // Create the chart
                 const ctx = document.getElementById('commitsChart').getContext('2d');
                 new Chart(ctx, {
-                    type: 'line',
+                    type: 'bar', // Changed to bar chart
                     data: {
                         labels: minutes,
                         datasets: [{
                             label: 'Commits per Minute',
                             data: commitCounts,
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderWidth: 1
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                            barPercentage: 0.5, // Adjusted bar width
+                            categoryPercentage: 0.8 // Adjusted spacing between bars
                         }]
                     },
                     options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    color: '#333'
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        return `Minute ${tooltipItem.label}: ${tooltipItem.raw} commits`;
+                                    }
+                                }
+                            }
+                        },
                         scales: {
                             x: {
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: 'Minute'
+                                    text: 'Minute',
+                                    color: '#333'
+                                },
+                                ticks: {
+                                    color: '#333'
                                 }
                             },
                             y: {
                                 beginAtZero: true,
                                 title: {
                                     display: true,
-                                    text: 'Number of Commits'
+                                    text: 'Number of Commits',
+                                    color: '#333'
                                 },
-                                suggestedMax: 10, // Set the maximum value to 10
+                                suggestedMax: 10,
                                 ticks: {
-                                    // Ensure that the ticks are integers
+                                    color: '#333',
                                     callback: function(value) {
                                         return Number.isInteger(value) ? value : '';
                                     }
