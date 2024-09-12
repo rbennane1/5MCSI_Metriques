@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commits par Minute</title>
+    <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Commits par Minute</h1>
@@ -17,16 +34,19 @@
             $.getJSON('https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits', function(data) {
                 const commitsByMinute = {};
 
+                // Process each commit
                 data.forEach(commit => {
                     const date = new Date(commit.commit.author.date);
                     const minute = date.getMinutes();
-                    
+
+                    // Count commits per minute
                     if (!commitsByMinute[minute]) {
                         commitsByMinute[minute] = 0;
                     }
                     commitsByMinute[minute]++;
                 });
 
+                // Prepare data for the chart
                 const minutes = Object.keys(commitsByMinute).sort((a, b) => a - b);
                 const commitCounts = minutes.map(minute => commitsByMinute[minute] || 0);
 
